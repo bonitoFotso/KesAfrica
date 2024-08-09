@@ -5,7 +5,10 @@ import Box from '@mui/material/Box';
 
 import Nav from './nav';
 import Main from './main';
+import Logo from './Logo';
 import Header from './header';
+import Footer from './footer';
+
 
 // ----------------------------------------------------------------------
 
@@ -14,18 +17,31 @@ export default function DashboardLayout({ children }) {
 
   return (
     <>
-      <Header onOpenNav={() => setOpenNav(true)} />
+      <Logo src="/assets/logo1.png" alt="Company Logo" />
+
+        <Header />
 
       <Box
         sx={{
-          minHeight: 1,
+          minHeight: '100vh',
           display: 'flex',
-          flexDirection: { xs: 'column', lg: 'row' },
+          flexDirection: 'column',
         }}
       >
-        <Nav openNav={openNav} onCloseNav={() => setOpenNav(false)} />
+        {/* Navigation and Content */}
+        <Box
+          sx={{
+            display: 'flex',
+            flexDirection: { xs: 'column', lg: 'row' },
+            flex: 1,
+          }}
+        >
+          <Nav openNav={openNav} onCloseNav={() => setOpenNav(false)} />
+          <Main>{children}</Main>
+        </Box>
 
-        <Main>{children}</Main>
+        {/* Footer at the Bottom */}
+        <Footer />
       </Box>
     </>
   );

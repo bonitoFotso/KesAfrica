@@ -126,7 +126,7 @@ export default function Nav({ openNav, onCloseNav }) {
     <Box
       sx={{
         flexShrink: { lg: 0 },
-        width: { lg: NAV.WIDTH },
+        width: { lg: 0 },
       }}
     >
       {upLg ? (
@@ -134,7 +134,7 @@ export default function Nav({ openNav, onCloseNav }) {
           sx={{
             height: 1,
             position: 'fixed',
-            width: NAV.WIDTH,
+            width: 0,
             borderRight: (theme) => `dashed 1px ${theme.palette.divider}`,
           }}
         >

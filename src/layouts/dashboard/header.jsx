@@ -6,7 +6,7 @@ import AppBar from '@mui/material/AppBar';
 import Button from '@mui/material/Button';
 import Toolbar from '@mui/material/Toolbar';
 import { useTheme } from '@mui/material/styles';
-import IconButton from '@mui/material/IconButton'; // Importer le composant Button
+import IconButton from '@mui/material/IconButton';
 
 import { useResponsive } from 'src/hooks/use-responsive';
 
@@ -14,11 +14,9 @@ import { bgBlur } from 'src/theme/css';
 
 import Iconify from 'src/components/iconify';
 
+import { HEADER } from './config-layout';
 import Searchbar from './common/searchbar';
-import { NAV, HEADER } from './config-layout';
-import AccountPopover from './common/account-popover';
 import LanguagePopover from './common/language-popover';
-import NotificationsPopover from './common/notifications-popover';
 
 // ----------------------------------------------------------------------
 
@@ -26,6 +24,30 @@ export default function Header({ onOpenNav }) {
   const theme = useTheme();
 
   const lgUp = useResponsive('up', 'lg');
+
+  const renderTopStrip = (
+    <Box
+      sx={{
+        width: '100%',
+        backgroundColor: theme.palette.primary.main,
+        color: theme.palette.common.white,
+        p: 1,
+        display: 'flex',
+        justifyContent: 'flex-end',
+        alignItems: 'center',
+      }}
+    >
+      <Button color="inherit" sx={{ ml: 2 }}>
+        Aide
+      </Button>
+      <Button color="inherit" sx={{ ml: 2 }}>
+        Assistance
+      </Button>
+      <Button color="inherit" sx={{ ml: 2 }}>
+        Connexion
+      </Button>
+    </Box>
+  );
 
   const renderContent = (
     <>
@@ -39,8 +61,7 @@ export default function Header({ onOpenNav }) {
 
       <Box sx={{ flexGrow: 1 }} />
 
-      <Stack direction="row" alignItems="center" spacing={2}> {/* Augmenter l'espacement */}
-        {/* Boutons de navigation */}
+      <Stack direction="row" alignItems="center" spacing={2}>
         <Button href="#home">Page d Accueil</Button>
         <Button href="#about">À Propos</Button>
         <Button href="#services">Services</Button>
@@ -50,17 +71,16 @@ export default function Header({ onOpenNav }) {
         <Button href="#faq">FAQ</Button>
 
         <LanguagePopover />
-        <NotificationsPopover />
-        <AccountPopover />
       </Stack>
     </>
   );
 
   return (
     <AppBar
+      position="sticky"
       sx={{
         boxShadow: 'none',
-        height: HEADER.H_MOBILE,
+        width: '100%',
         zIndex: theme.zIndex.appBar + 1,
         ...bgBlur({
           color: theme.palette.background.default,
@@ -69,15 +89,17 @@ export default function Header({ onOpenNav }) {
           duration: theme.transitions.duration.shorter,
         }),
         ...(lgUp && {
-          width: `calc(100% - ${NAV.WIDTH + 1}px)`,
           height: HEADER.H_DESKTOP,
         }),
       }}
     >
+      {renderTopStrip}
       <Toolbar
         sx={{
-          height: 1,
+          height: HEADER.H_MOBILE,
           px: { lg: 5 },
+          display: 'flex',
+          alignItems: 'center',
         }}
       >
         {renderContent}
