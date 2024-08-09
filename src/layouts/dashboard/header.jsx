@@ -6,6 +6,7 @@ import AppBar from '@mui/material/AppBar';
 import Button from '@mui/material/Button';
 import Toolbar from '@mui/material/Toolbar';
 import { useTheme } from '@mui/material/styles';
+import Grid from '@mui/material/Unstable_Grid2';
 import IconButton from '@mui/material/IconButton';
 
 import { useResponsive } from 'src/hooks/use-responsive';
@@ -14,6 +15,7 @@ import { bgBlur } from 'src/theme/css';
 
 import Iconify from 'src/components/iconify';
 
+import Logo from './Logo';
 import { HEADER } from './config-layout';
 import Searchbar from './common/searchbar';
 import LanguagePopover from './common/language-popover';
@@ -37,6 +39,12 @@ export default function Header({ onOpenNav }) {
         alignItems: 'center',
       }}
     >
+      <Grid>
+      <Searchbar />
+
+
+      </Grid>
+            
       <Button color="inherit" sx={{ ml: 2 }}>
         Aide
       </Button>
@@ -46,18 +54,19 @@ export default function Header({ onOpenNav }) {
       <Button color="inherit" sx={{ ml: 2 }}>
         Connexion
       </Button>
-    </Box>
-  );
-
-  const renderContent = (
-    <>
       {!lgUp && (
         <IconButton onClick={onOpenNav} sx={{ mr: 1 }}>
           <Iconify icon="eva:menu-2-fill" />
         </IconButton>
       )}
+    </Box>
+  );
 
-      <Searchbar />
+  const renderContent = (
+    <>
+             <Logo src="/assets/logo1.png" alt="Company Logo" />
+
+
 
       <Box sx={{ flexGrow: 1 }} />
 

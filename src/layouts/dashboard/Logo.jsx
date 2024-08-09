@@ -11,13 +11,10 @@ import Box from '@mui/material/Box';
 const Logo = ({ src, alt }) => (
     <Box
       sx={{
-        position: 'fixed',
-        top: 10,
-        left: 10,
         display: 'flex',
         justifyContent: 'flex-end',
         alignItems: 'center',
-        bgcolor: "white",
+        // bgcolor: "white",
         zIndex: 1000,
         // py: `${HEADER.H_MOBILE + SPACING}px`,
         img: {

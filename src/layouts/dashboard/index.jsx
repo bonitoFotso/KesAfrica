@@ -5,7 +5,6 @@ import Box from '@mui/material/Box';
 
 import Nav from './nav';
 import Main from './main';
-import Logo from './Logo';
 import Header from './header';
 import Footer from './footer';
 
@@ -17,9 +16,8 @@ export default function DashboardLayout({ children }) {
 
   return (
     <>
-      <Logo src="/assets/logo1.png" alt="Company Logo" />
 
-        <Header />
+        <Header onOpenNav = {setOpenNav} />
 
       <Box
         sx={{

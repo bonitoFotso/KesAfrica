@@ -4,7 +4,10 @@ import Grid from '@mui/material/Unstable_Grid2';
 
 import MainBanner from '../MainBanner';
 import MainServices from '../MainServices';
+import NewsComponent from '../NewsComponent';
+import ImageCarousel from '../ImageCarousel';
 import QuickIntroduction from '../QuickIntroduction';
+
 
 // ----------------------------------------------------------------------
 
@@ -20,6 +23,15 @@ export default function AppView() {
         <MainBanner />
         </Grid>
 
+        <Grid id="about" xs={12} >
+        <NewsComponent />
+        </Grid>
+
+        <Grid id="about" xs={12} >
+        <ImageCarousel />
+        </Grid>
+
+        
         <Grid id="about" xs={12} >
         <QuickIntroduction />
         </Grid>
